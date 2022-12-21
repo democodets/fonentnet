@@ -9,6 +9,8 @@ import { VoteComponent } from './components/vote/vote.component';
 import { PollComponent } from './components/poll/poll.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './components/about/about.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ItemComponent,
     VoteComponent,
     PollComponent,
-    LoginComponent
+    LoginComponent,
+    AboutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
