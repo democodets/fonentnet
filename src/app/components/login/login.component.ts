@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
     console.log(this.formLogin.value)
     if(this.formLogin.invalid) {return;}
     this.app.checklogin(this.formLogin.value).subscribe((res:any) => {
+      console.log(res);
+      
       if(res.User) {
         sessionStorage.setItem('login', JSON.stringify(res.User))
         this.router.navigate(['/'])

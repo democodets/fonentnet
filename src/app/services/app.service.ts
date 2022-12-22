@@ -16,22 +16,19 @@ export class AppService {
     return this.http.get(`${api}/item/api/all`)
   }
   getPollById(id : number){
-    return this.http.get(`${api}/item/api/all`)
-  }
-  checklogin(data : any){22
-    return this.http.post(`${api}/api/log-in`,data);
-  }
-  getProductById(id: number): any {
-    return this.http.get<any>(`${api}/poll/api/${id}`)
+    return this.http.get(`${api}/poll/api/byid/${id}`)
   }
 
-  getAccountInfo() {
-    let storge = sessionStorage.getItem('login');
-    if (storge) {
-      return JSON.parse(storge);
-    }
-    else {
-      return null;
-    }
+  getPollId(id : number){
+    return this.http.get(`${api}/poll/api/${id}`)
   }
+
+  getItemId(id : number){
+    return this.http.get(`${api}/item/api/${id}`)
+  }
+
+  checklogin(data : any){
+    return this.http.post(`${api}/api/log-in`,data);
+  }
+
 }

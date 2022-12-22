@@ -14,12 +14,18 @@ items : any = [];
 
    ngOnInit(): void {
     this.app.getPoll().subscribe((res :any) => { 
-      this.cats = res; 
+      console.log(res.poll);
+      this.cats = res.poll; 
+
+      for(let cats of res.data){
+        this.cats = new Date(cats.start).toLocaleDateString('zh-Hans-CN') 
+        console.log(  this.cats = new Date(cats.start).toLocaleDateString('zh-Hans-CN') );
+        
+      }
     })
     this.app.getItem().subscribe((res :any) => {
-      console.log(res);
-      
       this.items = res;
+      
       
     })
    }
