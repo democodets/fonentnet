@@ -5,16 +5,30 @@
         <h4>Chào mừng bạn đến với cuộc thi {{cat.name}}</h4>
       </div>
       <div class="row">
-
-        <div class="col-lg-4 col-sm-6" *ngFor="let it of items">
-          <div class="item">
+      
+      <div class="input-group p-4 text-center">
+      
+        <div class="form-outline">
+          <input type="search" id="form1" class="form-control" name="searchText" [(ngModel)]="seachText" />
+        </div>
+        <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button>
+        
+      </div>
+      <div class="container">
+        <h2>Các thí sinh tham gia thi đấu</h2>
+      </div>
+        <div class="col-lg-4 col-sm-6" *ngFor="let it of items | filter: seachText">
+          <div class="item text-center">
             <div class="pro-image">
               <img class="card-img-top"  [routerLink]="['/item',it.id]" src="http://localhost:3000/uploads/{{it.image}}">
             </div>
-            <h4><a [routerLink]="['/item',it.id]">{{it.name}}</a></h4>
-            <a (click)="addvote(it.id)">Bình chọn</a>
+            <h4 class="text-center"><a [routerLink]="['/item',it.id]" >{{it.name}}</a></h4>
+            <div class="con-info">SBD: <span>{{it.id}}</span></div>
+            <a (click)="vote(it.id)">Bình chọn</a>
             <ul>
-              <li><i class="fa-solid fa-heart"></i> : {{it.voteQtt}}</li>
+              <li>Lượt bình chọn<i class="fa-solid fa-heart"></i> : {{it.voteQtt}}</li>
             </ul>
           </div>
         </div>

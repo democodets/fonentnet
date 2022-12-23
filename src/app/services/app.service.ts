@@ -24,9 +24,12 @@ export class AppService {
     return this.http.get(`${api}/item/api/${id}`)
   }
 
-  getVoteId(id : number){
-    
-    return this.http.get(`${api}/user/api/vote/${id}`);
+  getVote( itemid : number, userid : number){
+    let data = {
+      itemId : itemid,
+      userId : userid
+    }
+  return this.http.post(`${api}/user/api/vote/{id}`,data);
   }
 
   checklogin(data : any){
@@ -44,5 +47,8 @@ export class AppService {
 
   get_register(data: any): any {
     return this.http.post<any>(`${api}/register`, data);
+  }
+  action_vote_candidate(id:number){
+    return this.http.get<any>(`${api}/user/vote/${id}`,{withCredentials:true});
   }
 }
