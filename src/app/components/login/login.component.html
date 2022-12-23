@@ -1,29 +1,43 @@
+<div class="container py-5 h-100">
+    
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
-<div class="col-md-4 offset-4">
-  <form action="" method="POST" [formGroup]="formLogin" (submit)="onLogin()">
-      <legend>Form login</legend>
-      
-      
-      
-      <div class="form-group">
-          <label for="">Email</label>
-          <input type="text" class="form-control" formControlName="email" placeholder="Input Email">
-          <div *ngIf="f['email'].touched && f['email'].errors">
-              <small class="help-block"  *ngIf="f['email'].errors['required']">Email không được để trống</small>
-              <small class="help-block" *ngIf="f['email'].errors['email']">Email không đúng định dạng</small>
-              <small class="help-block" *ngIf="f['email'].errors['minlength']">Email tối thiệu 12 ký tự</small>
+            <form action="" method="POST" [formGroup]="formLogin" (submit)="onLogin()">
+                <legend>Đăng nhập</legend>
+             
+                <div class="form-group">
+                  <div class="alert alert-danger" *ngIf="error">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>{{error}}!</strong>
+                </div>
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" formControlName="email" placeholder="Input Email">
+                    <div *ngIf="f['email'].touched && f['email'].errors">
+                        <small class="help-block"  *ngIf="f['email'].errors['required']">Email không được để trống</small>
+                        <small class="help-block" *ngIf="f['email'].errors['email']">Email không đúng định dạng</small>
+                        <small class="help-block" *ngIf="f['email'].errors['minlength']">Email tối thiệu 12 ký tự</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control"  formControlName="password" placeholder="Input Password">
+                    <div *ngIf="f['password'].touched && f['password'].errors">
+                        <small class="help-block" *ngIf="f['password'].errors['required']">Mật khẩu không được để trống</small>
+                    </div>
+                </div>
+            
+            
+                <button type="submit" class="btn btn-primary" [disabled]="f['email'].errors || f['password'].errors">Login Now</button>
+            </form>
+            <div>
+              <p class="mb-0">Bạn chưa có tài khoản vui lòng đăng ký <a routerLink="/register" class="text-white-50 fw-bold">Đăng ký</a>
+              </p>
+            </div>
           </div>
+        </div>
       </div>
-  
-      <div class="form-group">
-          <label for="">Password</label>
-          <input type="password" class="form-control"  formControlName="password" placeholder="Input Password">
-          <div *ngIf="f['password'].touched && f['password'].errors">
-              <small class="help-block" *ngIf="f['password'].errors['required']">Mật khẩu không được để trống</small>
-          </div>
-      </div>
-  
-  
-      <button type="submit" class="btn btn-primary" [disabled]="f['email'].errors || f['password'].errors">Login Now</button>
-  </form>
-</div>
+    </div>
+  </div>

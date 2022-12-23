@@ -19,23 +19,28 @@ constructor(private app:AppService,private activedRoutes: ActivatedRoute
 
   ngOnInit(): void {
     this.app.getPoll().subscribe((res :any) => { 
-      console.log(res.poll);
+      // console.log(res.poll);
       this.cats = res.poll; 
     })
     this.activedRoutes.paramMap.subscribe((query: any) => {
       this.id = query.get('id');
       this.app.getPollById(this.id).subscribe((res :any) => {
-      console.log(res.itemPerPoll)
+      // console.log(res.itemPerPoll)
         this.items = res.itemPerPoll;
       });
     this.app.getPollId(this.id).subscribe((res :any) => {
-      console.log(res);
-      
+      // console.log(res);
       this.cat = res;
     })
     })
-    
-   
    }
+
+   
+   addvote(id: number) {
+    this.app.getVoteId(id).subscribe((res :any) => {
+      console.log(res);
+    })
+   }
+   
  
 }

@@ -1,50 +1,69 @@
- <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Tạo tài khoản</h2>
-              <form>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example1cg">Tên</label>
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg"/>
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example3cg">Email</label>
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg"/>
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example4cg">Mật khẩu</label>
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg"/>
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example4cg">Adress</label>
-                    <input type="text" id="form3Example4cg" class="form-control form-control-lg"/>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example4cg">Phone</label>
-                    <input type="text" id="form3Example4cg" class="form-control form-control-lg"/>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example4cg">Ảnh</label>
-                    <input type="file" id="form3Example4cg" class="form-control form-control-lg"/>
-                  </div>
-
-              
-
-                <div class="d-flex justify-content-center">
-                  <button type="button"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng ký</button>
-                </div>
-
-                <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản <a routerLink="/login"
-                    class="fw-bold text-body"><u>Đăng nhập</u></a></p>
-
-              </form>
-
+<div class="container h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+      <div class="card" style="border-radius: 15px;">
+        <div class="card-body p-5">
+          <h2 class="text-uppercase text-center mb-5">Tạo tài khoản</h2>
+          <form method="post" [formGroup]="formRegister" (submit)="on_register()" enctype="multipart/form-data">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example1cg">Tên</label>
+              <input type="text" i class="form-control form-control-lg" formControlName="name" />
+              <div *ngIf="f['name'].touched && f['name'].errors">
+                <small class="help-block" *ngIf="f['name'].errors['required']">Tên không được để trống </small>
+                <small class="help-block" *ngIf="f['name'].errors['minlength']">Tên phải ít nhất 4 ký tự</small>
+              </div>
             </div>
-          </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example3cg ">Email</label>
+              <input type="email" id="form3Example3cg" class="form-control form-control-lg" formControlName="email" />
+              <div *ngIf="f['email'].touched && f['email'].errors">
+                <small class="help-block" *ngIf="f['email'].errors['required']">Email không được để trống</small>
+                <small class="help-block" *ngIf="f['email'].errors['email']">Email không đúng định dạng </small>
+              </div>
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example4cg">Mật khẩu</label>
+              <input type="password" class="form-control form-control-lg" formControlName="password" />
+              <div *ngIf="f['password'].touched && f['password'].errors">
+                <small class="help-block" *ngIf="f['password'].errors['required']">Mật khẩu không được để trống</small>
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example4cg">Địa chỉ</label>
+              <input type="text" class="form-control form-control-lg" formControlName="address" />
+              <div *ngIf="f['address'].touched && f['address'].errors">
+                <small class="help-block" *ngIf="f['address'].errors['required']">Địa chỉ không được để trống</small>
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example4cg">Phone</label>
+              <input type="text" class="form-control form-control-lg" formControlName="phone" />
+              <div *ngIf="f['phone'].touched && f['phone'].errors">
+                <small class="help-block" *ngIf="f['phone'].errors['required']">Số điện thoại không được để
+                  trống</small>
+              </div>
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example4cg">Ảnh</label>
+              <input type="file" class="form-control-file d-inline" (change)="getFile($event)" formControlName="image"
+                id="input-file">
+            </div>
+
+
+
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng
+                ký</button>
+            </div>
+          </form>
+          <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản
+            <a routerLink="/login" class="fw-bold text-body"><u>Đăng nhập</u></a>
+          </p>
         </div>
       </div>
     </div>
-
+  </div>
+</div>

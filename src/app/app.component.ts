@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from './services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fonent';
+  account : any;
+  constructor(private app: AppService) {
+
+  }
+  ngOnInit(): void {
+  
+   
+}
+  onLogout(){
+    sessionStorage.clear();
+    location.assign('/')
+  }
 }

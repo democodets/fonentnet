@@ -9,10 +9,10 @@
         <div class="col-lg-4 col-sm-6" *ngFor="let it of items">
           <div class="item">
             <div class="pro-image">
-              <img class="card-img-top"  [routerLink]="['/item',it.id]" src="http://localhost:3000/uploads/{{it.image}}" > alt="">
+              <img class="card-img-top"  [routerLink]="['/item',it.id]" src="http://localhost:3000/uploads/{{it.image}}">
             </div>
             <h4><a [routerLink]="['/item',it.id]">{{it.name}}</a></h4>
-            <button>Bình chọn</button>
+            <a (click)="addvote(it.id)">Bình chọn</a>
             <ul>
               <li><i class="fa-solid fa-heart"></i> : {{it.voteQtt}}</li>
             </ul>

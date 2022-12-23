@@ -9,6 +9,7 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  error : string = '';
  formLogin: FormGroup = new FormGroup({
   email: new FormControl('',[Validators.required, Validators.email]),
   password: new FormControl('',Validators.required)
@@ -24,20 +25,16 @@ export class LoginComponent implements OnInit {
   return this.formLogin.controls
 }
 
-  onLogin () {
-    console.log(this.formLogin.value)
-    if(this.formLogin.invalid) {return;}
-    this.app.checklogin(this.formLogin.value).subscribe((res:any) => {
-      console.log(res);
-      
-      if(res.User) {
-        sessionStorage.setItem('login', JSON.stringify(res.User))
-        this.router.navigate(['/'])
+  onLogin(){
+    this.app.checklogin(this.formLogin.value).subscribe((res: any) => {
+      if (res) {
+        sessionStorage.setItem('login', JSON.stringify(res.result));
+        location.assign('/');
+      } 
+      else {
+        this.error = "tài khoản không đúng"
       }
-      
-    });
-    // console.log(this.formLogin.value)
-
+    })
   }
 }
 
