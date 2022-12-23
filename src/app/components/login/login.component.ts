@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   password: new FormControl('',Validators.required)
  });
   constructor(private app:AppService
-    , private router:Router) {
+   ) {
   
   }
   ngOnInit(): void {
@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   get f() {
   return this.formLogin.controls
 }
-
   onLogin(){
     this.app.checklogin(this.formLogin.value).subscribe((res: any) => {
       if (res) {
