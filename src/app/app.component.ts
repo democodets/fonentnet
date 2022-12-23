@@ -13,8 +13,12 @@ export class AppComponent {
 
   }
   ngOnInit(): void {
-  
-   
+  let acc = sessionStorage.getItem('login')
+   if(acc) {
+    this.account = JSON.parse(acc);
+    console.log({ab : this.account});
+    
+   }
 }
   onLogout(){
     sessionStorage.clear();

@@ -16,10 +16,17 @@
                      <a class="nav-link" routerLink="/about">Giới thiệu</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" routerLink="/login">Đăng nhập</a>
+                     <a class="nav-link" routerLink="/login" *ngIf="!account">Đăng nhập</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href=""  (click)="onLogout()">Logout</a>
+                     <a class="nav-link" routerLink="/register" *ngIf="!account">Đăng ký</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" routerLink="/login" *ngIf="account">chào {{account.email}}</a>
+               </li>
+                 
+                  <li class="nav-item">
+                     <a class="nav-link" href="" *ngIf="account" (click)="onLogout()">Logout</a>
                  </li>
                  
                </ul>
@@ -33,9 +40,11 @@
             <ul>
                <li class="active"><a routerLink="/">Trang Chủ</a></li>
                <li><a routerLink="/about">Giới Thiệu</a></li>
-               <li><a routerLink="/login">Đăng nhập</a></li> 
+               <li><a routerLink="/login" *ngIf="!account">Đăng nhập</a></li> 
+               <li><a routerLink="/login" *ngIf="!account">Đăng nhập</a></li> 
+               <li><a routerLink="/login" *ngIf="account">chào {{account.user.email}}</a></li> 
                <li >
-                  <a (click)="onLogout()">Logout</a>
+                  <a (click)="onLogout()" *ngIf="account">Logout</a>
               </li>
             </ul>
          </div>
