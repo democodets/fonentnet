@@ -17,10 +17,16 @@ cats : any = [];
 items : any = [];
 votes : any = [];
 seachText: any;
+account : any ;
 constructor(private app:AppService,private activedRoutes: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    let acc = sessionStorage.getItem('login')
+   if(acc) {
+    this.account = JSON.parse(acc);
+   }
+
     this.app.getPoll().subscribe((res :any) => { 
       // console.log(res.poll);
       this.cats = res.poll; 
@@ -39,33 +45,22 @@ constructor(private app:AppService,private activedRoutes: ActivatedRoute
     })
     })
    }
-   addvote(id: number) {
-    this.app.getVote(this.id, id).subscribe((res :any) => {
+   //yeu
+   
+   vote(itemId:number) {
+    console.log(itemId);
+    
+    this.app.voteItem(itemId).subscribe((res:any) => {
+      // if (res.action == true){
+      //   alert('Đã bình chọn')
+      //   // location.assign('/home');
+      // } else if (res.action == false){
+      //   alert('Hết tiền ròi')
+      // }
+      alert('cảm ơn bạn');
+      window.location.reload();
+      console.log(res);      
       
     })
-   }
-
-
-   vote(idCandidate:number) {
-    this.app.action_vote_candidate(idCandidate).subscribe((res:any) => {
-
-      console.log(res);
-      this.app.getPollById(this.id).subscribe((res :any) => {
-        this.votes = res;
-         
-        // console.log(res.itemPerPoll)
-          this.items = res.itemPerPoll;
-          console.log(this.items.voteQtt + 1);
-        this.votes = this.items.voteQtt ++ 
-
-          console.log(this.votes)
-          
-        });
-
-      
-      
-      
-    })
- 
 }
 }

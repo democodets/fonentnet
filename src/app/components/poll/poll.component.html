@@ -26,14 +26,13 @@
             </div>
             <h4 class="text-center"><a [routerLink]="['/item',it.id]" >{{it.name}}</a></h4>
             <div class="con-info">SBD: <span>{{it.id}}</span></div>
-            <a (click)="vote(it.id)">Bình chọn</a>
+            <a class=" btn btn-primary" (click) ="vote(it.id)">Bình chọn ngay</a>
             <ul>
-              <li>Lượt bình chọn<i class="fa-solid fa-heart"></i> : {{it.voteQtt}}</li>
+              <li>Lượt bình chọn<i class="fa-solid fa-heart"></i>: {{it.voteQtt}}</li>
             </ul>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

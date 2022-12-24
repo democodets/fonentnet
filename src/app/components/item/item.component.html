@@ -1,7 +1,8 @@
 <main class="sc-jqUVSM eXTpjp">
   <section class="sc-cTQhss PpAvn">
-    <div class="sc-bczRLJ MVcoT">
-      <div class="header-content"><img src="http://localhost:3000/uploads/{{item.image}}" class="contestant-image">
+    <div class="sc-bczRLJ MVcoT text-center">
+      <div class="header-content">
+        <img src="http://localhost:3000/uploads/{{item.image}}" class="contestant-image" width= 100%>
         <div class="header-right">
           <h2 class="con-name">{{item.name}}</h2>
           <div class="con-info">Đến từ: <span>{{item.address}}</span></div>
@@ -9,17 +10,19 @@
           <div class="con-info">Tuổi: <span>{{item.age}}</span></div>
         </div>
       </div>
+      <div class="story-bottom">
+        <h2 class="title">Tự thông tin trên</h2>
+        <p>Giới thiệu : {{item.description}}</p>
+        <button class="sc-breuTD jtisIA vote_dropdown open-modal">Bình chọn ngay</button>
+      </div>
     </div>
    
   </section>
-  <section class="sc-jOrMOR ZHHax">
-    <div class="sc-bczRLJ MVcoT">
+  
+  
      
-      <div class="story-bottom">
-        <h2 class="title">Tự giới thiệu</h2>
-        <p>{{item.description}}</p>
-      </div>
-    </div>
-    <button class="sc-breuTD jtisIA vote_dropdown open-modal">Bình chọn ngay</button>
-  </section>
+     
+    
+    
+  
 </main>

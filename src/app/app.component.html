@@ -22,7 +22,7 @@
                      <a class="nav-link" routerLink="/register" *ngIf="!account">Đăng ký</a>
                  </li>
                  <li class="nav-item">
-                  <a class="nav-link" routerLink="/login" *ngIf="account">chào {{account.email}}</a>
+                  <a class="nav-link" routerLink="/" *ngIf="account">chào {{account.email}}</a>
                </li>
                  
                   <li class="nav-item">
@@ -41,8 +41,8 @@
                <li class="active"><a routerLink="/">Trang Chủ</a></li>
                <li><a routerLink="/about">Giới Thiệu</a></li>
                <li><a routerLink="/login" *ngIf="!account">Đăng nhập</a></li> 
-               <li><a routerLink="/login" *ngIf="!account">Đăng nhập</a></li> 
-               <li><a routerLink="/login" *ngIf="account">chào {{account.user.email}}</a></li> 
+               <li><a routerLink="/register" *ngIf="!account">Đăng Ký</a></li> 
+               <li><a routerLink="/" *ngIf="account">chào {{account.user.email}}</a></li> 
                <li >
                   <a (click)="onLogout()" *ngIf="account">Logout</a>
               </li>

@@ -27,15 +27,15 @@ export class LoginComponent implements OnInit {
   onLogin(){
     this.app.checklogin(this.formLogin.value).subscribe((res: any) => {
       if (res) {
-        sessionStorage.setItem('login', JSON.stringify(res));
+        localStorage.setItem('login', JSON.stringify(res));
         console.log(res);
-        
         location.assign('/');
       } 
       else {
         this.error = "tài khoản không đúng"
       }
     })
+    
   }
 }
 

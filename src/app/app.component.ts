@@ -13,15 +13,15 @@ export class AppComponent {
 
   }
   ngOnInit(): void {
-  let acc = sessionStorage.getItem('login')
+  let acc = localStorage.getItem('login')
    if(acc) {
     this.account = JSON.parse(acc);
-    console.log({ab : this.account});
+    console.log({});
     
    }
 }
   onLogout(){
-    sessionStorage.clear();
+    localStorage.clear();
     location.assign('/')
   }
 }

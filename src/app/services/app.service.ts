@@ -24,19 +24,19 @@ export class AppService {
     return this.http.get(`${api}/item/api/${id}`)
   }
 
-  getVote( itemid : number, userid : number){
-    let data = {
-      itemId : itemid,
-      userId : userid
-    }
-  return this.http.post(`${api}/user/api/vote/{id}`,data);
+  getvote(id : number) {
+    let storge = localStorage.getItem('login');
+    return this.http.post(`${api}/user/vote/${id}`,{withCredentials:true});
   }
-
+  
+  voteItem(itemId:number){
+    return this.http.get<any>(`${api}/user/vote/${itemId}`,{withCredentials:true});
+  }
   checklogin(data : any){
     return this.http.post(`${api}/api/log-in`,data,{withCredentials:true});
   }
   getAccountInfo() {
-    let storge = sessionStorage.getItem('login');
+    let storge = localStorage.getItem('login');
     if (storge) {
       return JSON.parse(storge);
     }
@@ -48,7 +48,5 @@ export class AppService {
   get_register(data: any): any {
     return this.http.post<any>(`${api}/register`, data);
   }
-  action_vote_candidate(id:number){
-    return this.http.get<any>(`${api}/user/vote/${id}`,{withCredentials:true});
-  }
+ 
 }
